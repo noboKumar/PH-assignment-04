@@ -1,7 +1,7 @@
 function cashOut(money) {
   const chargeAmmount = (money * 1.75) / 100;
 
-  if (typeof money !== "number" || money < 0) {
+  if (typeof money !== "number" || Number.isNaN(money) || money < 0) {
     return "Invalid";
   }
   return chargeAmmount;
@@ -63,4 +63,31 @@ function isBestFriend(f1, f2) {
   } else {
     return false;
   }
+}
+
+function calculateWatchTime(times) {
+  let hours = 0;
+  let minutes = 0;
+  let seconds = 0;
+  let totalTime = 0;
+  let timeObj = { hour: 0, minute: 0, second: 0 };
+
+  for (const timeList of times) {
+    totalTime += timeList;
+
+    if (typeof timeList !== "number" || Number.isNaN(timeList)) {
+      timeObj = "Invalid";
+    } else {
+      let timeReminder = totalTime % 3600;
+
+      hours = Math.floor(totalTime / 3600);
+      minutes = Math.floor(timeReminder / 60);
+      seconds = Math.floor(timeReminder % 60);
+
+      timeObj.hour = hours;
+      timeObj.minute = minutes;
+      timeObj.second = seconds;
+    }
+  }
+  return timeObj;
 }
