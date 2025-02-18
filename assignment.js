@@ -7,3 +7,19 @@ function cashOut(money) {
   return chargeAmmount;
 }
 
+function validEmail(email) {
+  const specialSymbol = [".", "-", "_", "+", "@"];
+  if (typeof email !== "string") {
+    return "Invalid";
+  } else if (
+    !specialSymbol.includes(email[0]) &&
+    email[email.length - 1] !== "@" &&
+    email.split("@").length - 1 === 1 &&
+    !email.includes(" ") &&
+    email.slice(email.length - 4) === ".com"
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
