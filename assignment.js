@@ -23,3 +23,27 @@ function validEmail(email) {
     return false;
   }
 }
+
+function electionResult(votes) {
+  let mangoVote = [];
+  let bananaVote = [];
+  if (Array.isArray(votes)) {
+    for (const eachVote of votes) {
+      if (eachVote === "mango") {
+        mangoVote.push(eachVote);
+      } else if (eachVote === "banana") {
+        bananaVote.push(eachVote);
+      }
+    }
+  } else {
+    return "Invalid";
+  }
+
+  if (mangoVote.length > bananaVote.length) {
+    return "Mango";
+  } else if (bananaVote.length > mangoVote.length) {
+    return "Banana";
+  } else {
+    return "Draw";
+  }
+}
